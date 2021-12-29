@@ -4,6 +4,13 @@
 Kafeerio Commons is a media repository of free-use images, videos, other media, and svg, txt and other files.
 
 
+## Resources
+
+### [Wikidata](/wikidata)
+
+A collection of Wikidata queries written in SPARQL to retrieve country, subdivision and district names.
+
+
 ## Copyright
 
 Copyright &copy; 2021 [Kafeerio](https://kafeerio.org).
