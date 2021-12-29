@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ro
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ro ?countryLabel_yi
 {
   BIND(wd:Q218 AS ?country) .
 
@@ -36,6 +36,9 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ro
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "ro" .
     ?country rdfs:label ?countryLabel_ro .
+  } hint:Prior hint:runLast false .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "yi" .
+    ?country rdfs:label ?countryLabel_yi .
   } hint:Prior hint:runLast false .
 }
 ORDER BY ASC(?countryLabel)
