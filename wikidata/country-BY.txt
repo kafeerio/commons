@@ -1,0 +1,59 @@
+#
+# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+#
+# This file is part of Kafeerio Commons.
+#
+# Kafeerio Commons is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Kafeerio Commons is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Kafeerio Commons.  If not, see <https://www.gnu.org/licenses/>.
+#
+#
+# Country Belarus
+#
+# @column country : Wikidata objects
+# @column countryKey : Three-digit country codes (ISO 3166-1 numeric)
+# @column countryCode : Two-letter country codes (ISO 3166-1 alpha-2)
+# @column countryLabel : Country names in English
+# @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
+#
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_be ?countryLabel_ru ?countryLabel_pl ?countryLabel_uk ?countryLabel_yi
+{
+  BIND(wd:Q184 AS ?country) .
+
+  ?country wdt:P299 ?countryKey ;
+           wdt:P297 ?countryCode .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+  # Official language: Belarusian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "be" .
+    ?country rdfs:label ?countryLabel_be .
+  } hint:Prior hint:runLast false .
+  # Official language: Russian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ru" .
+    ?country rdfs:label ?countryLabel_ru .
+  } hint:Prior hint:runLast false .
+
+  # Recognized minority language: Polish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "pl" .
+    ?country rdfs:label ?countryLabel_pl .
+  } hint:Prior hint:runLast false .
+  # Recognized minority language: Ukrainian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk" .
+    ?country rdfs:label ?countryLabel_uk .
+  } hint:Prior hint:runLast false .
+  # Recognized minority language: Yiddish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "yi" .
+    ?country rdfs:label ?countryLabel_yi .
+  } hint:Prior hint:runLast false .
+}
+ORDER BY ASC(?countryLabel)
