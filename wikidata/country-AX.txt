@@ -34,6 +34,7 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_sv
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Swedish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "sv" .
     ?country rdfs:label ?countryLabel_sv .
   } hint:Prior hint:runLast false .
