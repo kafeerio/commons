@@ -39,15 +39,15 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_sq ?country
     ?country rdfs:label ?countryLabel_sq .
   } hint:Prior hint:runLast false .
 
-  # Recognised minority languages: Greek
+  # Recognised minority language: Greek
   SERVICE wikibase:label { bd:serviceParam wikibase:language "el" .
     ?country rdfs:label ?countryLabel_el .
   } hint:Prior hint:runLast false .
-  # Recognised minority languages: Macedonian
+  # Recognised minority language: Macedonian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "mk" .
     ?country rdfs:label ?countryLabel_mk .
   } hint:Prior hint:runLast false .
-  # Recognised minority languages: Aromanian
+  # Recognised minority language: Aromanian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "rup" .
     ?country rdfs:label ?countryLabel_rup .
   } hint:Prior hint:runLast false .
