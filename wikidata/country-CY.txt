@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_el ?countryLabel_tr
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_el ?countryLabel_tr ?countryLabel_hy ?countryLabel_acy
 {
   BIND(wd:Q229 AS ?country) .
 
@@ -34,11 +34,22 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_el ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Greek
   SERVICE wikibase:label { bd:serviceParam wikibase:language "el" .
     ?country rdfs:label ?countryLabel_el .
   } hint:Prior hint:runLast false .
+  # Official language: Turkish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "tr" .
     ?country rdfs:label ?countryLabel_tr .
+  } hint:Prior hint:runLast false .
+
+  # Minority language: Armenian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "hy" .
+    ?country rdfs:label ?countryLabel_hy .
+  } hint:Prior hint:runLast false .
+  # Minority language: Cypriot Arabic
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "acy" .
+    ?country rdfs:label ?countryLabel_acy .
   } hint:Prior hint:runLast false .
 }
 ORDER BY ASC(?countryLabel)
