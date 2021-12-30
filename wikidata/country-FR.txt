@@ -34,6 +34,7 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_fr
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: French
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fr" .
     ?country rdfs:label ?countryLabel_fr .
   } hint:Prior hint:runLast false .
