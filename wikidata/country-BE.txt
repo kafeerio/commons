@@ -34,12 +34,15 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_de ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: German
   SERVICE wikibase:label { bd:serviceParam wikibase:language "de" .
     ?country rdfs:label ?countryLabel_de .
   } hint:Prior hint:runLast false .
+  # Official language: French
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fr" .
     ?country rdfs:label ?countryLabel_fr .
   } hint:Prior hint:runLast false .
+  # Official language: Dutch
   SERVICE wikibase:label { bd:serviceParam wikibase:language "nl" .
     ?country rdfs:label ?countryLabel_nl .
   } hint:Prior hint:runLast false .
