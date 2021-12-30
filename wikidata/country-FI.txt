@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_fi ?countryLabel_sv ?countryLabel_krl ?countryLabel_rmf ?countryLabel_smi
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_fi ?countryLabel_sv ?countryLabel_krl ?countryLabel_rmf ?countryLabel_se ?countryLabel_smi
 {
   BIND(wd:Q33 AS ?country) .
 
@@ -34,18 +34,28 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_fi ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Finnish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fi" .
     ?country rdfs:label ?countryLabel_fi .
   } hint:Prior hint:runLast false .
+  # Official language: Swedish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "sv" .
     ?country rdfs:label ?countryLabel_sv .
   } hint:Prior hint:runLast false .
+
+  # Recognized national language: Karelian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "krl" .
     ?country rdfs:label ?countryLabel_krl .
   } hint:Prior hint:runLast false .
+  # Recognized national language: Finnish Kalo
   SERVICE wikibase:label { bd:serviceParam wikibase:language "rmf" .
     ?country rdfs:label ?countryLabel_rmf .
   } hint:Prior hint:runLast false .
+  # Recognized national language: Northern Sámi
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "se" .
+    ?country rdfs:label ?countryLabel_se .
+  } hint:Prior hint:runLast false .
+  # Recognized national language: Sámi
   SERVICE wikibase:label { bd:serviceParam wikibase:language "smi" .
     ?country rdfs:label ?countryLabel_smi .
   } hint:Prior hint:runLast false .
