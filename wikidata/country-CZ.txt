@@ -25,7 +25,8 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_cs
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_cs ?countryLabel_be ?countryLabel_de ?countryLabel_el ?countryLabel_hu ?countryLabel_pl
+       ?countryLabel_rom ?countryLabel_ru ?countryLabel_rue ?countryLabel_sr ?countryLabel_sk ?countryLabel_uk ?countryLabel_vi
 {
   BIND(wd:Q213 AS ?country) .
 
@@ -34,8 +35,58 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_cs
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Czech
   SERVICE wikibase:label { bd:serviceParam wikibase:language "cs" .
     ?country rdfs:label ?countryLabel_cs .
+  } hint:Prior hint:runLast false .
+
+  # Officially recognized language: Belarusian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "be" .
+    ?country rdfs:label ?countryLabel_be .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: German
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" .
+    ?country rdfs:label ?countryLabel_de .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Greek
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "el" .
+    ?country rdfs:label ?countryLabel_el .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Hungarian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "hu" .
+    ?country rdfs:label ?countryLabel_hu .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Polish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "pl" .
+    ?country rdfs:label ?countryLabel_pl .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Romani
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rom" .
+    ?country rdfs:label ?countryLabel_rom .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Russian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ru" .
+    ?country rdfs:label ?countryLabel_ru .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Rusyn
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rue" .
+    ?country rdfs:label ?countryLabel_rue .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Serbian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sr" .
+    ?country rdfs:label ?countryLabel_sr .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Slovak
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sk" .
+    ?country rdfs:label ?countryLabel_sk .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Ukrainian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk" .
+    ?country rdfs:label ?countryLabel_uk .
+  } hint:Prior hint:runLast false .
+  # Officially recognized language: Vietnamese
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "vi" .
+    ?country rdfs:label ?countryLabel_vi .
   } hint:Prior hint:runLast false .
 }
 ORDER BY ASC(?countryLabel)
