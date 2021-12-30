@@ -34,6 +34,7 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_es
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Spanish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "es" .
     ?country rdfs:label ?countryLabel_es .
   } hint:Prior hint:runLast false .
