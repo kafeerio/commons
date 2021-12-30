@@ -34,6 +34,7 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_et
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Estonian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "et" .
     ?country rdfs:label ?countryLabel_et .
   } hint:Prior hint:runLast false .
