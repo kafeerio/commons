@@ -34,6 +34,7 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_bg
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Bulgarian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "bg" .
     ?country rdfs:label ?countryLabel_bg .
   } hint:Prior hint:runLast false .
