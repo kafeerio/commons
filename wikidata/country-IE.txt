@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -32,11 +32,15 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ga ?country
   ?country wdt:P299 ?countryKey ;
            wdt:P297 ?countryCode .
 
+  # Official language: English
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Irish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "ga" .
     ?country rdfs:label ?countryLabel_ga .
   } hint:Prior hint:runLast false .
+
+  # Spoken language: Shelta
   SERVICE wikibase:label { bd:serviceParam wikibase:language "sth" .
     ?country rdfs:label ?countryLabel_sth .
   } hint:Prior hint:runLast false .
