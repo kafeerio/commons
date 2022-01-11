@@ -1,0 +1,59 @@
+#
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
+#
+# This file is part of Kafeerio Commons.
+#
+# Kafeerio Commons is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Kafeerio Commons is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Kafeerio Commons.  If not, see <https://www.gnu.org/licenses/>.
+#
+#
+# Country United Kingdom
+#
+# @column country : Wikidata objects
+# @column countryKey : Three-digit country codes (ISO 3166-1 numeric)
+# @column countryCode : Two-letter country codes (ISO 3166-1 alpha-2)
+# @column countryLabel : Country names in English
+# @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
+#
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_cy ?countryLabel_ga ?countryLabel_gd ?countryLabel_kw ?countryLabel_sco
+{
+  BIND(wd:Q145 AS ?country) .
+
+  ?country wdt:P299 ?countryKey ;
+           wdt:P297 ?countryCode .
+
+  # Official language: English
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+  # Regional and minority language: Welsh
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "cy" .
+    ?country rdfs:label ?countryLabel_cy .
+  } hint:Prior hint:runLast false .
+  # Regional and minority language: Irish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ga" .
+    ?country rdfs:label ?countryLabel_ga .
+  } hint:Prior hint:runLast false .
+  # Regional and minority language: Scottish Gaelic
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "gd" .
+    ?country rdfs:label ?countryLabel_gd .
+  } hint:Prior hint:runLast false .
+  # Regional and minority language: Cornish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "kw" .
+    ?country rdfs:label ?countryLabel_kw .
+  } hint:Prior hint:runLast false .
+  # Regional and minority language: Scots
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sco" .
+    ?country rdfs:label ?countryLabel_sco .
+  } hint:Prior hint:runLast false .
+}
+ORDER BY ASC(?countryLabel)
