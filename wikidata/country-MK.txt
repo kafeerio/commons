@@ -1,0 +1,67 @@
+#
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
+#
+# This file is part of Kafeerio Commons.
+#
+# Kafeerio Commons is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Kafeerio Commons is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Kafeerio Commons.  If not, see <https://www.gnu.org/licenses/>.
+#
+#
+# Country North Macedonia
+#
+# @column country : Wikidata objects
+# @column countryKey : Three-digit country codes (ISO 3166-1 numeric)
+# @column countryCode : Two-letter country codes (ISO 3166-1 alpha-2)
+# @column countryLabel : Country names in English
+# @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
+#
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_mk ?countryLabel_sq ?countryLabel_bs ?countryLabel_rom ?countryLabel_rup ?countryLabel_sr ?countryLabel_tr
+{
+  BIND(wd:Q221 AS ?country) .
+
+  ?country wdt:P299 ?countryKey ;
+           wdt:P297 ?countryCode .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+  # Official language: Macedonian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "mk" .
+    ?country rdfs:label ?countryLabel_mk .
+  } hint:Prior hint:runLast false .
+  # Official language: Albanian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sq" .
+    ?country rdfs:label ?countryLabel_sq .
+  } hint:Prior hint:runLast false .
+
+  # Official regional language: Bosnian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "bs" .
+    ?country rdfs:label ?countryLabel_bs .
+  } hint:Prior hint:runLast false .
+  # Official regional language: Romani
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rom" .
+    ?country rdfs:label ?countryLabel_rom .
+  } hint:Prior hint:runLast false .
+  # Official regional language: Aromanian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rup" .
+    ?country rdfs:label ?countryLabel_rup .
+  } hint:Prior hint:runLast false .
+  # Official regional language: Serbian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sr" .
+    ?country rdfs:label ?countryLabel_sr .
+  } hint:Prior hint:runLast false .
+  # Official regional language: Turkish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "tr" .
+    ?country rdfs:label ?countryLabel_tr .
+  } hint:Prior hint:runLast false .
+}
+ORDER BY ASC(?countryLabel)
