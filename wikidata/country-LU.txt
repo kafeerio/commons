@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -34,12 +34,15 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_lb ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Luxembourgish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "lb" .
     ?country rdfs:label ?countryLabel_lb .
   } hint:Prior hint:runLast false .
+  # Official language: German
   SERVICE wikibase:label { bd:serviceParam wikibase:language "de" .
     ?country rdfs:label ?countryLabel_de .
   } hint:Prior hint:runLast false .
+  # Official language: French
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fr" .
     ?country rdfs:label ?countryLabel_fr .
   } hint:Prior hint:runLast false .
