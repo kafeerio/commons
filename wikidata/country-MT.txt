@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -32,11 +32,15 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_mt ?country
   ?country wdt:P299 ?countryKey ;
            wdt:P297 ?countryCode .
 
+  # Official language: English
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Maltese
   SERVICE wikibase:label { bd:serviceParam wikibase:language "mt" .
     ?country rdfs:label ?countryLabel_mt .
   } hint:Prior hint:runLast false .
+
+  # Other language: Italian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "it" .
     ?country rdfs:label ?countryLabel_it .
   } hint:Prior hint:runLast false .
