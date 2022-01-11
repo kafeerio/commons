@@ -1,0 +1,71 @@
+#
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
+#
+# This file is part of Kafeerio Commons.
+#
+# Kafeerio Commons is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Kafeerio Commons is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Kafeerio Commons.  If not, see <https://www.gnu.org/licenses/>.
+#
+#
+# Country Kazakhstan
+#
+# @column country : Wikidata objects
+# @column countryKey : Three-digit country codes (ISO 3166-1 numeric)
+# @column countryCode : Two-letter country codes (ISO 3166-1 alpha-2)
+# @column countryLabel : Country names in English
+# @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
+#
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_kk ?countryLabel_ru ?countryLabel_tg ?countryLabel_tt ?countryLabel_tr ?countryLabel_ug ?countryLabel_uk ?countryLabel_uz
+{
+  BIND(wd:Q232 AS ?country) .
+
+  ?country wdt:P299 ?countryKey ;
+           wdt:P297 ?countryCode .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+  # Official language: Kazakh
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "kk" .
+    ?country rdfs:label ?countryLabel_kk .
+  } hint:Prior hint:runLast false .
+  # Official language: Russian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ru" .
+    ?country rdfs:label ?countryLabel_ru .
+  } hint:Prior hint:runLast false .
+
+  # Minority language: Tajik
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "tg" .
+    ?country rdfs:label ?countryLabel_tg .
+  } hint:Prior hint:runLast false .
+  # Minority language: Tatar
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "tt" .
+    ?country rdfs:label ?countryLabel_tt .
+  } hint:Prior hint:runLast false .
+  # Minority language: Turkish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "tr" .
+    ?country rdfs:label ?countryLabel_tr .
+  } hint:Prior hint:runLast false .
+  # Minority language: Uyghur
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ug" .
+    ?country rdfs:label ?countryLabel_ug .
+  } hint:Prior hint:runLast false .
+  # Minority language: Ukrainian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk" .
+    ?country rdfs:label ?countryLabel_uk .
+  } hint:Prior hint:runLast false .
+  # Minority language: Uzbek
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uz" .
+    ?country rdfs:label ?countryLabel_uz .
+  } hint:Prior hint:runLast false .
+}
+ORDER BY ASC(?countryLabel)
