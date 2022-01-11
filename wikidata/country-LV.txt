@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_lv ?countryLabel_ltg
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_lv ?countryLabel_liv ?countryLabel_ltg
 {
   BIND(wd:Q211 AS ?country) .
 
@@ -34,9 +34,16 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_lv ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Latvian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "lv" .
     ?country rdfs:label ?countryLabel_lv .
   } hint:Prior hint:runLast false .
+
+  # Other language: Livonian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "liv" .
+    ?country rdfs:label ?countryLabel_liv .
+  } hint:Prior hint:runLast false .
+  # Other language: Latgalian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "ltg" .
     ?country rdfs:label ?countryLabel_ltg .
   } hint:Prior hint:runLast false .
