@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_pl ?countryLabel_yi
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_pl ?countryLabel_csb ?countryLabel_szl ?countryLabel_yi
 {
   BIND(wd:Q36 AS ?country) .
 
@@ -34,9 +34,21 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_pl ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Polish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "pl" .
     ?country rdfs:label ?countryLabel_pl .
   } hint:Prior hint:runLast false .
+
+  # Recognized regional language: Kashubian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "csb" .
+    ?country rdfs:label ?countryLabel_csb .
+  } hint:Prior hint:runLast false .
+
+  # Minority language: Silesian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "szl" .
+    ?country rdfs:label ?countryLabel_szl .
+  } hint:Prior hint:runLast false .
+  # Minority language: Yiddish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "yi" .
     ?country rdfs:label ?countryLabel_yi .
   } hint:Prior hint:runLast false .
