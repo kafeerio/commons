@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -25,24 +25,38 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_nl ?countryLabel_fy ?countryLabel_pap ?countryLabel_yi
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_nl ?countryLabel_fy ?countryLabel_pap ?countryLabel_li ?countryLabel_rmo ?countryLabel_yi
 {
-  BIND(wd:Q29999 AS ?country) .
+  BIND(wd:Q55 AS ?country) .
 
   ?country wdt:P299 ?countryKey ;
            wdt:P297 ?countryCode .
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Dutch
   SERVICE wikibase:label { bd:serviceParam wikibase:language "nl" .
     ?country rdfs:label ?countryLabel_nl .
   } hint:Prior hint:runLast false .
+
+  # Regional language: West Frisian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fy" .
     ?country rdfs:label ?countryLabel_fy .
   } hint:Prior hint:runLast false .
+  # Regional language: Papiamento
   SERVICE wikibase:label { bd:serviceParam wikibase:language "pap" .
     ?country rdfs:label ?countryLabel_pap .
   } hint:Prior hint:runLast false .
+
+  # Recognised language: Limburgish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "li" .
+    ?country rdfs:label ?countryLabel_li .
+  } hint:Prior hint:runLast false .
+  # Recognised language: Sinte Romani
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rmo" .
+    ?country rdfs:label ?countryLabel_rmo .
+  } hint:Prior hint:runLast false .
+  # Recognised language: Yiddish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "yi" .
     ?country rdfs:label ?countryLabel_yi .
   } hint:Prior hint:runLast false .
