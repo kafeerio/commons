@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_pt
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_pt ?countryLabel_mwl
 {
   BIND(wd:Q45 AS ?country) .
 
@@ -34,8 +34,14 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_pt
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Portuguese
   SERVICE wikibase:label { bd:serviceParam wikibase:language "pt" .
     ?country rdfs:label ?countryLabel_pt .
+  } hint:Prior hint:runLast false .
+
+  # Recognized regional language: Mirandese
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "mwl" .
+    ?country rdfs:label ?countryLabel_mwl .
   } hint:Prior hint:runLast false .
 }
 ORDER BY ASC(?countryLabel)
