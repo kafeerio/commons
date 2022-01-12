@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ro ?countryLabel_yi
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ro ?countryLabel_de ?countryLabel_hu ?countryLabel_rmc ?countryLabel_rmn ?countryLabel_rmy ?countryLabel_uk ?countryLabel_yi
 {
   BIND(wd:Q218 AS ?country) .
 
@@ -34,9 +34,36 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ro ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Romanian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "ro" .
     ?country rdfs:label ?countryLabel_ro .
   } hint:Prior hint:runLast false .
+
+  # Recognised minority language: German
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" .
+    ?country rdfs:label ?countryLabel_de .
+  } hint:Prior hint:runLast false .
+  # Recognised minority language: Hungarian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "hu" .
+    ?country rdfs:label ?countryLabel_hu .
+  } hint:Prior hint:runLast false .
+  # Recognised minority language: Carpathian Romani
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rmc" .
+    ?country rdfs:label ?countryLabel_rmc .
+  } hint:Prior hint:runLast false .
+  # Recognised minority language: Balkan Romani
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rmn" .
+    ?country rdfs:label ?countryLabel_rmn .
+  } hint:Prior hint:runLast false .
+  # Recognised minority language: Vlax Romani
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rmy" .
+    ?country rdfs:label ?countryLabel_rmy .
+  } hint:Prior hint:runLast false .
+  # Recognised minority language: Ukrainian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk" .
+    ?country rdfs:label ?countryLabel_uk .
+  } hint:Prior hint:runLast false .
+  # Recognised minority language: Yiddish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "yi" .
     ?country rdfs:label ?countryLabel_yi .
   } hint:Prior hint:runLast false .
