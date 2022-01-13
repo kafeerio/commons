@@ -1,0 +1,92 @@
+#
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
+#
+# This file is part of Kafeerio Commons.
+#
+# Kafeerio Commons is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Kafeerio Commons is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Kafeerio Commons.  If not, see <https://www.gnu.org/licenses/>.
+#
+#
+# Country Ukraine
+#
+# @column country : Wikidata objects
+# @column countryKey : Three-digit country codes (ISO 3166-1 numeric)
+# @column countryCode : Two-letter country codes (ISO 3166-1 alpha-2)
+# @column countryLabel : Country names in English
+# @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
+#
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_uk ?countryLabel_be ?countryLabel_bg ?countryLabel_crh ?countryLabel_gag ?countryLabel_el ?countryLabel_he
+ ?countryLabel_hu ?countryLabel_pl ?countryLabel_ro ?countryLabel_ru ?countryLabel_sk ?countryLabel_yi
+{
+  BIND(wd:Q212 AS ?country) .
+
+  ?country wdt:P299 ?countryKey ;
+           wdt:P297 ?countryCode .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+  # Official language: Ukrainian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk" .
+    ?country rdfs:label ?countryLabel_uk .
+  } hint:Prior hint:runLast false .
+
+  # Recognised regional language: Belarusian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "be" .
+    ?country rdfs:label ?countryLabel_be .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Bulgarian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "bg" .
+    ?country rdfs:label ?countryLabel_bg .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Crimean Tatar
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "crh" .
+    ?country rdfs:label ?countryLabel_crh .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Gagauz
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "gag" .
+    ?country rdfs:label ?countryLabel_gag .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Greek
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "el" .
+    ?country rdfs:label ?countryLabel_el .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Hebrew
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "he" .
+    ?country rdfs:label ?countryLabel_he .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Hungarian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "hu" .
+    ?country rdfs:label ?countryLabel_hu .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Polish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "pl" .
+    ?country rdfs:label ?countryLabel_pl .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Romanian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ro" .
+    ?country rdfs:label ?countryLabel_ro .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Russian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ru" .
+    ?country rdfs:label ?countryLabel_ru .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Slovak
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sk" .
+    ?country rdfs:label ?countryLabel_sk .
+  } hint:Prior hint:runLast false .
+  # Recognised regional language: Yiddish
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "yi" .
+    ?country rdfs:label ?countryLabel_yi .
+  } hint:Prior hint:runLast false .
+}
+ORDER BY ASC(?countryLabel)
