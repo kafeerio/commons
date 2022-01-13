@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -34,12 +34,16 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_sl ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Slovene
   SERVICE wikibase:label { bd:serviceParam wikibase:language "sl" .
     ?country rdfs:label ?countryLabel_sl .
   } hint:Prior hint:runLast false .
+
+  # Recognised regional language: Hungarian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "hu" .
     ?country rdfs:label ?countryLabel_hu .
   } hint:Prior hint:runLast false .
+  # Recognised regional language: Italian
   SERVICE wikibase:label { bd:serviceParam wikibase:language "it" .
     ?country rdfs:label ?countryLabel_it .
   } hint:Prior hint:runLast false .
