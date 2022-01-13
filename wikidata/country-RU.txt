@@ -1,0 +1,141 @@
+#
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
+#
+# This file is part of Kafeerio Commons.
+#
+# Kafeerio Commons is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Kafeerio Commons is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Kafeerio Commons.  If not, see <https://www.gnu.org/licenses/>.
+#
+#
+# Country Russia
+#
+# @column country : Wikidata objects
+# @column countryKey : Three-digit country codes (ISO 3166-1 numeric)
+# @column countryCode : Two-letter country codes (ISO 3166-1 alpha-2)
+# @column countryLabel : Country names in English
+# @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
+#
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_ru ?countryLabel_abq ?countryLabel_ady ?countryLabel_alt ?countryLabel_ba ?countryLabel_bua ?countryLabel_ce
+ ?countryLabel_cv ?countryLabel_crh ?countryLabel_myv ?countryLabel_inh ?countryLabel_kbd ?countryLabel_xal ?countryLabel_krc ?countryLabel_kjh ?countryLabel_kv
+ ?countryLabel_mrj ?countryLabel_mhr ?countryLabel_mdf ?countryLabel_nog ?countryLabel_os ?countryLabel_tt ?countryLabel_tyv ?countryLabel_udm ?countryLabel_uk ?countryLabel_sah
+{
+  BIND(wd:Q159 AS ?country) .
+
+  ?country wdt:P299 ?countryKey ;
+           wdt:P297 ?countryCode .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+  # Official language: Russian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ru" .
+    ?country rdfs:label ?countryLabel_ru .
+  } hint:Prior hint:runLast false .
+
+  # Recognised national language: Abaza
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "abq" .
+    ?country rdfs:label ?countryLabel_abq .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Adyghe
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ady" .
+    ?country rdfs:label ?countryLabel_ady .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Southern Altai
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "alt" .
+    ?country rdfs:label ?countryLabel_alt .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Bashkir
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ba" .
+    ?country rdfs:label ?countryLabel_ba .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Buryat
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "bua" .
+    ?country rdfs:label ?countryLabel_bua .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Chechen
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ce" .
+    ?country rdfs:label ?countryLabel_ce .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Chuvash
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "cv" .
+    ?country rdfs:label ?countryLabel_cv .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Crimean Tatar
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "crh" .
+    ?country rdfs:label ?countryLabel_crh .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Erzya
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "myv" .
+    ?country rdfs:label ?countryLabel_myv .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Ingush
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "inh" .
+    ?country rdfs:label ?countryLabel_inh .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Kabardian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "kbd" .
+    ?country rdfs:label ?countryLabel_kbd .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Kalmyk
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "xal" .
+    ?country rdfs:label ?countryLabel_xal .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Karachay-Balkar
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "krc" .
+    ?country rdfs:label ?countryLabel_krc .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Khakas
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "kjh" .
+    ?country rdfs:label ?countryLabel_kjh .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Komi-Zyrian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "kv" .
+    ?country rdfs:label ?countryLabel_kv .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Hill Mari
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "mrj" .
+    ?country rdfs:label ?countryLabel_mrj .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Meadow Mari
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "mhr" .
+    ?country rdfs:label ?countryLabel_mhr .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Moksha
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "mdf" .
+    ?country rdfs:label ?countryLabel_mdf .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Nogai
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "nog" .
+    ?country rdfs:label ?countryLabel_nog .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Ossetian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "os" .
+    ?country rdfs:label ?countryLabel_os .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Tatar
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "tt" .
+    ?country rdfs:label ?countryLabel_tt .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Udmurt
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "udm" .
+    ?country rdfs:label ?countryLabel_udm .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Ukrainian
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk" .
+    ?country rdfs:label ?countryLabel_uk .
+  } hint:Prior hint:runLast false .
+  # Recognised national language: Yakut
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sah" .
+    ?country rdfs:label ?countryLabel_sah .
+  } hint:Prior hint:runLast false .
+}
+ORDER BY ASC(?countryLabel)
