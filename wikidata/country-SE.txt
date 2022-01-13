@@ -1,5 +1,5 @@
 #
-# Copyright 2021 Kafeerio, <https://kafeerio.org>.
+# Copyright 2022 Kafeerio, <https://kafeerio.org>.
 #
 # This file is part of Kafeerio Commons.
 #
@@ -25,7 +25,7 @@
 # @column countryLabel : Country names in English
 # @column countryLabel_{Language code (ISO 639-1)} : Country names in the specified language
 #
-SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_sv ?countryLabel_fi ?countryLabel_fit ?countryLabel_sma ?countryLabel_sme ?countryLabel_smj ?countryLabel_yi
+SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_sv ?countryLabel_fi ?countryLabel_fit ?countryLabel_rmf ?countryLabel_se ?countryLabel_sma ?countryLabel_smj ?countryLabel_yi
 {
   BIND(wd:Q34 AS ?country) .
 
@@ -34,24 +34,36 @@ SELECT ?country ?countryKey ?countryCode ?countryLabel ?countryLabel_sv ?country
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 
+  # Official language: Swedish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "sv" .
     ?country rdfs:label ?countryLabel_sv .
   } hint:Prior hint:runLast false .
+
+  # National minority language: Finnish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fi" .
     ?country rdfs:label ?countryLabel_fi .
   } hint:Prior hint:runLast false .
+  # National minority language: Meänkieli
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fit" .
     ?country rdfs:label ?countryLabel_fit .
   } hint:Prior hint:runLast false .
+  # Recognized national language: Finnish Kalo
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "rmf" .
+    ?country rdfs:label ?countryLabel_rmf .
+  } hint:Prior hint:runLast false .
+  # National minority language: Northern Sámi
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "se" .
+    ?country rdfs:label ?countryLabel_se .
+  } hint:Prior hint:runLast false .
+  # National minority language: Southern Sámi
   SERVICE wikibase:label { bd:serviceParam wikibase:language "sma" .
     ?country rdfs:label ?countryLabel_sma .
   } hint:Prior hint:runLast false .
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "sme" .
-    ?country rdfs:label ?countryLabel_sme .
-  } hint:Prior hint:runLast false .
+  # National minority language: Lule Sámi
   SERVICE wikibase:label { bd:serviceParam wikibase:language "smj" .
     ?country rdfs:label ?countryLabel_smj .
   } hint:Prior hint:runLast false .
+  # National minority language: Yiddish
   SERVICE wikibase:label { bd:serviceParam wikibase:language "yi" .
     ?country rdfs:label ?countryLabel_yi .
   } hint:Prior hint:runLast false .
