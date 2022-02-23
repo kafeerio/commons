@@ -6,9 +6,8 @@ Kafeerio Commons is a media repository of free-use images, videos, other media, 
 
 ## Resources
 
-### [Wikidata](/wikidata)
-
-A collection of Wikidata queries written in SPARQL to retrieve country, subdivision and district names.
+- [wikidata](/wikidata)  
+  A collection of Wikidata queries written in SPARQL to retrieve country, subdivision and district names.
 
 
 ## Copyright
