@@ -13,7 +13,7 @@ A collection of Wikidata queries written in SPARQL to retrieve country, subdivis
 
 ## Copyright
 
-Copyright &copy; 2021 [Kafeerio](https://kafeerio.org).
+Copyright &copy; 2022 [Kafeerio](https://kafeerio.org).
 
 
 ## License
